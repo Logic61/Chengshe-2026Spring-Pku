@@ -198,7 +198,7 @@ public:
             curIdx = (curIdx + 1) % 5;
             searched++;
         }
-
+ 
         // 循环一遍都没钱买，停止生产
         stopped = true;
         cout << setfill('0') << setw(3) << time << " " 
