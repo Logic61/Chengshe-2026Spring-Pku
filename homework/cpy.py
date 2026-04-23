@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 # --- 配置 ---
-TARGET_DIR = r"C:\Users\32372\课程\Practice-on-Programming-Design-2026-Spring-PKU\homework\STL1"
-BASE_URL = "http://cxsjsx.openjudge.cn/hw202609/"
+TARGET_DIR = r"C:\Users\32372\课程\Practice-on-Programming-Design-2026-Spring-PKU\homework\C++11及高级特性"
+BASE_URL = "http://cxsjsx.openjudge.cn/hw202612/"
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -66,7 +66,7 @@ def sync_problem(problem_url):
         soup = BeautifulSoup(r.text, 'html.parser')
 
         # 1. 提取题目字母编号
-        letter_match = re.search(r'/hw202609/([A-Z])/', problem_url)
+        letter_match = re.search(r'/hw202612/([A-Z])/', problem_url)
         if not letter_match:
             print(f"警告: 无法从 {problem_url} 提取字母编号，跳过。")
             return
@@ -129,8 +129,8 @@ def main():
     try:
         r = fetch_url(BASE_URL)
         soup = BeautifulSoup(r.text, 'html.parser')
-        # 匹配 href 格式：/hw202609/A/  （结尾没有其他字符）
-        links = soup.find_all('a', href=re.compile(r'/hw202609/[A-Z]/$'))
+        # 匹配 href 格式：/hw202612/A/  （结尾没有其他字符）
+        links = soup.find_all('a', href=re.compile(r'/hw202612/[A-Z]/$'))
         urls = sorted(list(set([urljoin(BASE_URL, l['href']) for l in links])))
         print(f"共发现 {len(urls)} 道题目，准备下载...")
         for url in urls:
